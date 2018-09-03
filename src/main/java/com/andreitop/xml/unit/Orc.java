@@ -10,10 +10,15 @@ public class Orc implements Unit {
     private String weapon;
     private int colorCode;
 
+    public Orc(Mount mount) {
+        this.mount = mount;
+    }
 
     @Autowired
-    public Orc(@Qualifier("frostWolf") Mount mount) {
+    public Orc(@Qualifier("frostWolf") Mount mount, String weapon, int colorCode) {
         this.mount = mount;
+        this.weapon = weapon;
+        this.colorCode = colorCode;
     }
 
     @Override
@@ -37,12 +42,10 @@ public class Orc implements Unit {
         this.mount = mount;
     }
 
-    @Autowired
     public void setWeapon(String weapon) {
         this.weapon = weapon;
     }
 
-    @Autowired
     public void setColorCode(int colorCode) {
         this.colorCode = colorCode;
     }

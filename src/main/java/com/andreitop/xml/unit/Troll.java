@@ -2,6 +2,9 @@ package com.andreitop.xml.unit;
 
 import com.andreitop.xml.mount.Mount;
 import com.andreitop.xml.mount.Wolf;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.*;
 import java.util.stream.Stream;
@@ -19,6 +22,8 @@ public class Troll implements Unit {
         return colorCode;
     }
 
+    @Autowired
+    @Qualifier("colorCode")
     public void setColorCode(int colorCode) {
         this.colorCode = colorCode;
     }
@@ -27,18 +32,25 @@ public class Troll implements Unit {
         return creationDate;
     }
 
+    @Value("${character.created}")
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
 
+    @Autowired
+    @Qualifier("listOfMounts")
     public void setListOfMounts(List<Mount> listOfMounts) {
         this.listOfMounts = listOfMounts;
     }
 
+    @Autowired
+    @Qualifier("setOfMounts")
     public void setSetOfMounts(Set<Mount> setOfMounts) {
         this.setOfMounts = setOfMounts;
     }
 
+    @Autowired
+    @Qualifier("mapOfMounts")
     public void setMapOfMounts(Map<String, Mount> mapOfMounts) {
         this.mapOfMounts = mapOfMounts;
     }

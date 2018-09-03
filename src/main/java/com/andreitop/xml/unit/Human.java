@@ -10,12 +10,13 @@ public class Human implements Unit {
     private String leftHandWeapon;
     private String rightHandWeapon;
 
+    @Autowired
+    @Qualifier("shadowTiger")
     public void setMount(Mount mount) {
         this.mount = mount;
     }
 
-    @Autowired
-    public Human(@Qualifier("shadowTiger") Mount mount, String leftHandWeapon, String rightHandWeapon) {
+    public Human(Mount mount, String leftHandWeapon, String rightHandWeapon) {
         this.mount = mount;
         this.leftHandWeapon = leftHandWeapon;
         this.rightHandWeapon = rightHandWeapon;
