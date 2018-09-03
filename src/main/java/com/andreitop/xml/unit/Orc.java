@@ -1,6 +1,8 @@
 package com.andreitop.xml.unit;
 
 import com.andreitop.xml.mount.Mount;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 public class Orc implements Unit {
 
@@ -8,7 +10,9 @@ public class Orc implements Unit {
     private String weapon;
     private int colorCode;
 
-    public Orc(Mount mount) {
+
+    @Autowired
+    public Orc(@Qualifier("frostWolf") Mount mount) {
         this.mount = mount;
     }
 
@@ -17,24 +21,30 @@ public class Orc implements Unit {
         mount.move();
     }
 
-    public String getWeapon() {
-        return weapon;
+    public Mount getMount() {
+        return mount;
     }
 
-    public void setWeapon(String weapon) {
-        this.weapon = weapon;
+    public String getWeapon() {
+        return weapon;
     }
 
     public int getColorCode() {
         return colorCode;
     }
 
-    public void setColorCode(int colorCode) {
-        this.colorCode = colorCode;
+    public void setMount(Mount mount) {
+        this.mount = mount;
     }
 
-    public Mount getMount() {
-        return mount;
+    @Autowired
+    public void setWeapon(String weapon) {
+        this.weapon = weapon;
+    }
+
+    @Autowired
+    public void setColorCode(int colorCode) {
+        this.colorCode = colorCode;
     }
 }
 

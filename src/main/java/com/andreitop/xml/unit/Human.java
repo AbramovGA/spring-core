@@ -1,6 +1,8 @@
 package com.andreitop.xml.unit;
 
 import com.andreitop.xml.mount.Mount;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 public class Human implements Unit {
 
@@ -8,7 +10,12 @@ public class Human implements Unit {
     private String leftHandWeapon;
     private String rightHandWeapon;
 
-    public Human(Mount mount, String leftHandWeapon, String rightHandWeapon) {
+    public void setMount(Mount mount) {
+        this.mount = mount;
+    }
+
+    @Autowired
+    public Human(@Qualifier("shadowTiger") Mount mount, String leftHandWeapon, String rightHandWeapon) {
         this.mount = mount;
         this.leftHandWeapon = leftHandWeapon;
         this.rightHandWeapon = rightHandWeapon;
